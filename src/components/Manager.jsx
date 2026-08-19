@@ -39,6 +39,14 @@ const Manager = () => {
   };
 
   const deletePassword = (index) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this password?",
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
     const updated = passwordArray.filter((_, i) => i !== index);
     setPasswordArray(updated);
     localStorage.setItem("passwords", JSON.stringify(updated));
@@ -91,19 +99,19 @@ const Manager = () => {
   return (
     <>
       <div className="min-h-screen bg-green-100">
-        <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
           <div className="mb-8">
-            <h1 className=" flex justify-center text-4xl font-bold text-gray-800 mb-2">
+            <h1 className="flex justify-center text-3xl sm:text-4xl font-bold text-gray-800 mb-2">
               <span className="text-[#03b80ffd]">&lt;</span>
               <span>Pass</span>
               <span className="text-[#03b80ffd]">OP/&gt;</span>
             </h1>
-            <p className=" flex justify-center text-gray-600">
+            <p className="text-center text-sm sm:text-base text-gray-600">
               Securely manage all your passwords in one place
             </p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-6 mb-8 border border-gray-300">
+          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 mb-8 border border-gray-300">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Add New Password
             </h2>
@@ -188,7 +196,7 @@ const Manager = () => {
               </button>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 border border-gray-300">
+          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 border border-gray-300">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Your Passwords
             </h2>
@@ -203,7 +211,7 @@ const Manager = () => {
                       onClick={() => toggleExpand(index)}
                       className="w-full flex justify-between items-center px-4 py-3 bg-green-50 hover:bg-green-100 transition"
                     >
-                      <span className="font-medium text-gray-800">
+                      <span className="font-medium text-gray-800 text-left break-all pr-3">
                         {item.website}
                       </span>
                       <svg
@@ -284,8 +292,8 @@ const Manager = () => {
                               <label className="text-sm font-medium text-green-700">
                                 Website:
                               </label>
-                              <p className="text-green-900">
-                                <a href={item.website} target="_blank">
+                              <p className="text-green-900 break-all">
+                                <a href={item.website} target="_blank" rel="noreferrer">
                                   {item.website}
                                 </a>
                               </p>
@@ -372,7 +380,7 @@ const Manager = () => {
                                 </button>
                               </div>
                             </div>
-                            <div className="flex gap-2 mt-4">
+                            <div className="flex flex-wrap gap-2 mt-4">
                               <button
                                 onClick={() => startEdit(index)}
                                 className="flex items-center gap-2 px-3 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition"

@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const handleGitHubClick = () => {
     window.open("https://github.com/dizzy-sam1xp/PASSOP.git", "_blank");
   };
 
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <nav className="bg-linear-to-r from-green-50 to-emerald-50 border-b-2 border-green-400 shadow-md">
-      <div className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+      <div className="relative flex justify-between items-center gap-3 px-4 sm:px-6 py-4 max-w-7xl mx-auto">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            className="md:hidden p-2 text-gray-700 hover:text-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {isMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+
         <a href="/" className="flex items-center group">
           <div className="logo font-bold text-2xl tracking-tight">
             <span className="text-green-600 group-hover:text-green-700 transition-colors">
@@ -22,12 +43,14 @@ const Navbar = () => {
             </span>
           </div>
         </a>
+        </div>
 
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className={`${isMenuOpen ? "flex" : "hidden"} absolute left-0 right-0 top-full z-10 flex-col gap-1 border-t border-green-200 bg-green-50 px-4 py-3 shadow-md md:static md:flex md:w-auto md:flex-row md:items-center md:gap-8 md:border-0 md:bg-transparent md:p-0 md:shadow-none`}>
           <li>
             <Link
               to="/"
-              className="text-gray-700 font-medium hover:text-green-600 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-green-600 hover:after:w-full after:transition-all after:duration-300 transition-colors pb-1"
+              onClick={closeMenu}
+              className="block rounded-lg px-3 py-2 text-gray-700 font-medium hover:bg-green-100 hover:text-green-600 md:px-0 md:py-1 md:hover:bg-transparent"
             >
               Home
             </Link>
@@ -35,7 +58,8 @@ const Navbar = () => {
           <li>
             <Link
               to="/about"
-              className="text-gray-700 font-medium hover:text-green-600 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-green-600 hover:after:w-full after:transition-all after:duration-300 transition-colors pb-1"
+              onClick={closeMenu}
+              className="block rounded-lg px-3 py-2 text-gray-700 font-medium hover:bg-green-100 hover:text-green-600 md:px-0 md:py-1 md:hover:bg-transparent"
             >
               About
             </Link>
@@ -43,18 +67,21 @@ const Navbar = () => {
           <li>
             <Link
               to="/contact"
-              className="text-gray-700 font-medium hover:text-green-600 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-green-600 hover:after:w-full after:transition-all after:duration-300 transition-colors pb-1"
+              onClick={closeMenu}
+              className="block rounded-lg px-3 py-2 text-gray-700 font-medium hover:bg-green-100 hover:text-green-600 md:px-0 md:py-1 md:hover:bg-transparent"
             >
               Contact
             </Link>
           </li>
         </ul>
 
-        <button
-          onClick={handleGitHubClick}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={handleGitHubClick}
           title="Get the source code from GitHub"
-          className="relative group flex items-center gap-2 px-4 py-2 bg-white border-2 border-green-600 rounded-lg hover:bg-green-600 hover:shadow-lg transition-all duration-300 text-gray-700 hover:text-white font-medium"
-        >
+            className="relative group flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border-2 border-green-600 rounded-lg hover:bg-green-600 hover:shadow-lg transition-all duration-300 text-gray-700 hover:text-white font-medium"
+          >
           <svg
             className="w-5 h-5"
             viewBox="0 0 24 24"
@@ -68,7 +95,8 @@ const Navbar = () => {
           <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none font-normal">
             Get the source code from GitHub
           </span>
-        </button>
+          </button>
+        </div>
       </div>
     </nav>
   );

@@ -3,12 +3,12 @@ import React from "react";
 const About = () => {
   return (
     <div className="min-h-screen bg-green-100">
-      <div className="bg-linear-to-b from-green-100 to-green-50 py-16 px-6">
+      <div className="bg-linear-to-b from-green-100 to-green-50 py-10 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl font-bold text-gray-800 mb-6">
+          <h1 className="text-3xl sm:text-5xl font-bold text-gray-800 mb-6">
             About PassOP
           </h1>
-          <p className="text-xl text-gray-700 mb-4">
+          <p className="text-lg sm:text-xl text-gray-700 mb-4">
             PassOP is a simple and secure password manager designed to help you
             keep your login credentials organized in one place.
           </p>
@@ -19,14 +19,14 @@ const About = () => {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
         <div className="mb-20">
-          <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 sm:mb-12 text-center">
             What PassOP Does
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-300 hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-lg shadow-lg p-5 sm:p-8 border border-gray-300 hover:shadow-xl transition-shadow">
               <div className="text-4xl mb-4">🔐</div>
               <h3 className="text-2xl font-bold text-gray-800 mb-3">
                 Store Passwords
@@ -37,7 +37,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-300 hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-lg shadow-lg p-5 sm:p-8 border border-gray-300 hover:shadow-xl transition-shadow">
               <div className="text-4xl mb-4">⚡</div>
               <h3 className="text-2xl font-bold text-gray-800 mb-3">
                 Quick Access
@@ -48,7 +48,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-300 hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-lg shadow-lg p-5 sm:p-8 border border-gray-300 hover:shadow-xl transition-shadow">
               <div className="text-4xl mb-4">🛡️</div>
               <h3 className="text-2xl font-bold text-gray-800 mb-3">
                 Privacy First
@@ -64,11 +64,11 @@ const About = () => {
         </div>
 
         <div className="mb-20">
-          <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 text-center">
             Features
           </h2>
 
-          <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-300">
+          <div className="bg-white rounded-lg shadow-lg p-5 sm:p-8 border border-gray-300">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ul className="space-y-4">
                 <li className="flex items-center gap-3">
