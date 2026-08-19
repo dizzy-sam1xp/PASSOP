@@ -12,6 +12,7 @@ const Manager = () => {
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [editingIndex, setEditingIndex] = useState(null);
   const [copiedField, setCopiedField] = useState(null);
+  const [toast, setToast] = useState(null);
   const [editForm, setEditForm] = useState({
     website: "",
     username: "",
@@ -35,6 +36,7 @@ const Manager = () => {
       setPasswordArray(updated);
       localStorage.setItem("passwords", JSON.stringify(updated));
       setform({ website: "", username: "", password: "" });
+      showToast("Password saved successfully!");
     }
   };
 
@@ -50,6 +52,7 @@ const Manager = () => {
     const updated = passwordArray.filter((_, i) => i !== index);
     setPasswordArray(updated);
     localStorage.setItem("passwords", JSON.stringify(updated));
+    showToast("Password deleted successfully!");
   };
 
   const startEdit = (index) => {
@@ -64,6 +67,7 @@ const Manager = () => {
     setPasswordArray(updated);
     localStorage.setItem("passwords", JSON.stringify(updated));
     setEditingIndex(null);
+    showToast("Password updated successfully!");
   };
 
   const cancelEdit = () => {
@@ -82,22 +86,42 @@ const Manager = () => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
+  const showToast = (message) => {
+    setToast({ message });
+    setTimeout(() => setToast(null), 3000);
+  };
+
   const copyToClipboard = (text, index, field) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
         setCopiedField(`${index}-${field}`);
+        showToast(
+          `${field === "username" ? "Username" : "Password"} copied to clipboard!`,
+        );
         setTimeout(() => {
           setCopiedField(null);
         }, 2000);
       })
       .catch((err) => {
         console.error("Failed to copy: ", err);
+        showToast("Could not copy to clipboard.");
       });
   };
 
   return (
     <>
+      {toast && (
+        <div
+          role="status"
+          className="fixed right-4 top-4 z-50 flex max-w-[calc(100%-2rem)] items-center gap-3 rounded-lg border border-green-300 bg-white px-4 py-3 text-sm font-medium text-gray-800 shadow-lg sm:right-6 sm:top-6"
+        >
+          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
+            ✓
+          </span>
+          <span>{toast.message}</span>
+        </div>
+      )}
       <div className="min-h-screen bg-green-100">
         <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
           <div className="mb-8">
