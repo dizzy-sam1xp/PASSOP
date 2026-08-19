@@ -75,14 +75,17 @@ const Manager = () => {
   };
 
   const copyToClipboard = (text, index, field) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopiedField(`${index}-${field}`);
-      setTimeout(() => {
-        setCopiedField(null);
-      }, 2000);
-    }).catch((err) => {
-      console.error("Failed to copy: ", err);
-    });
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        setCopiedField(`${index}-${field}`);
+        setTimeout(() => {
+          setCopiedField(null);
+        }, 2000);
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
   };
 
   return (
@@ -281,17 +284,29 @@ const Manager = () => {
                               <label className="text-sm font-medium text-green-700">
                                 Website:
                               </label>
-                              <p className="text-green-900"><a href={item.website} target="_blank">{item.website}</a></p>
+                              <p className="text-green-900">
+                                <a href={item.website} target="_blank">
+                                  {item.website}
+                                </a>
+                              </p>
                             </div>
                             <div>
                               <label className="text-sm font-medium text-green-700">
                                 Username:
                               </label>
                               <div className="flex items-center gap-2">
-                                <p className="text-green-900">{item.username}</p>
+                                <p className="text-green-900">
+                                  {item.username}
+                                </p>
                                 <button
                                   type="button"
-                                  onClick={() => copyToClipboard(item.username, index, "username")}
+                                  onClick={() =>
+                                    copyToClipboard(
+                                      item.username,
+                                      index,
+                                      "username",
+                                    )
+                                  }
                                   className="cursor-pointer hover:opacity-70 transition"
                                 >
                                   {copiedField === `${index}-username` ? (
@@ -326,7 +341,13 @@ const Manager = () => {
                                 </p>
                                 <button
                                   type="button"
-                                  onClick={() => copyToClipboard(item.password, index, "password")}
+                                  onClick={() =>
+                                    copyToClipboard(
+                                      item.password,
+                                      index,
+                                      "password",
+                                    )
+                                  }
                                   className="cursor-pointer hover:opacity-70 transition"
                                 >
                                   {copiedField === `${index}-password` ? (
