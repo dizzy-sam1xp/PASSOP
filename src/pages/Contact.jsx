@@ -1,225 +1,97 @@
-import React, { useState } from "react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Frontend-only form handling - just reset the form
-    alert(
-      "Thank you for your message! This is a demo form. Please reach out via GitHub for actual communication.",
-    );
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-  };
-
   const handleGitHubClick = () => {
     window.open("https://github.com/dizzy-sam1xp/PASSOP.git", "_blank");
   };
 
   return (
-    <div className="min-h-screen bg-green-100">
-      {/* Hero Section */}
-      <div className="bg-linear-to-b from-green-100 to-green-50 py-10 sm:py-16 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-5xl font-bold text-gray-800 mb-6">
-            Get in Touch
+    <div className="min-h-screen bg-linear-to-b from-green-50 via-white to-emerald-50 text-slate-800">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+        <div className="mb-12 text-center">
+          <p className="mb-3 inline-flex items-center rounded-full border border-green-200 bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
+            Let’s connect
+          </p>
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+            Reach out to the PassOP community
           </h1>
-          <p className="text-lg sm:text-xl text-gray-700">
-            Have a question, found a bug, or have a suggestion? I'd love to hear
-            from you.
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-600">
+            Whether you want to contribute, ask a question, or share feedback,
+            there are a few simple ways to get in touch.
           </p>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
-        {/* Contact Form Section */}
-        <div className="mb-16">
-            <div className="bg-white rounded-lg shadow-lg p-5 sm:p-8 border border-gray-300">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
-              Send a Message
-            </h2>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name Field */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="Enter your name"
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200 transition"
-                  required
-                />
-              </div>
-
-              {/* Email Field */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Enter your email"
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200 transition"
-                  required
-                />
-              </div>
-
-              {/* Message Field */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  placeholder="Write your message..."
-                  rows="6"
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200 transition resize-none"
-                  required
-                ></textarea>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-        </div>
-
-        {/* Other Ways to Connect Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-            Other Ways to Connect
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* GitHub Card */}
-            <div className="bg-white rounded-lg shadow-lg p-5 sm:p-8 border border-gray-300 hover:shadow-xl transition-shadow">
-              <div className="text-4xl mb-4">
-                <svg
-                  className="w-12 h-12 text-gray-800"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">GitHub</h3>
-              <p className="text-gray-700 mb-6">
-                Check out the source code, report issues, or contribute to the
-                project.
-              </p>
-              <button
-                onClick={handleGitHubClick}
-                className="w-full flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-lg transition-colors"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943" />
-                </svg>
-                Visit GitHub
-              </button>
+        <div className="grid gap-6 md:grid-cols-3">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-slate-900 text-xl text-white">
+              <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.042-1.415-4.042-1.415-.546-1.385-1.333-1.754-1.333-1.754-1.089-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.303-5.467-1.334-5.467-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.009-.323 3.3 1.23A11.48 11.48 0 0 1 12 5.842c1.021 0 2.049.138 3.006.404 2.29-1.553 3.298-1.23 3.298-1.23.653 1.653.242 2.873.118 3.176.77.84 1.236 1.911 1.236 3.221 0 4.61-2.807 5.624-5.479 5.922.43.37.814 1.098.814 2.214v3.287c0 .319.218.694.825.576C20.566 21.8 24 17.302 24 12c0-6.627-5.373-12-12-12z" />
+              </svg>
             </div>
-
-            {/* Email Card */}
-            <div className="bg-white rounded-lg shadow-lg p-5 sm:p-8 border border-gray-300 hover:shadow-xl transition-shadow">
-              <div className="text-4xl mb-4">📧</div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">Email</h3>
-              <p className="text-gray-700 mb-6">
-                Have a question or want to get in touch? Send me an email.
-              </p>
-              <a
-                href="mailto:saksham.pawan14@yahoo.com"
-                className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"
-              >
-                Send Email
-              </a>
-            </div>
-
-            {/* Feedback Card */}
-            <div className="bg-white rounded-lg shadow-lg p-5 sm:p-8 border border-gray-300 hover:shadow-xl transition-shadow">
-              <div className="text-4xl mb-4">💡</div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">
-                Feedback
-              </h3>
-              <p className="text-gray-700 mb-6">
-                Found a bug or have an idea to improve PassOP? I'd love to hear
-                your feedback.
-              </p>
-              <button
-                onClick={handleGitHubClick}
-                className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"
-              >
-                Open an Issue
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Contribute Section */}
-        <div className="mb-16">
-          <div className="bg-linear-to-r from-green-100 to-emerald-50 rounded-lg shadow-lg p-5 sm:p-12 border-2 border-green-400">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              Contribute to PassOP
-            </h2>
-            <p className="text-lg text-gray-700 mb-8">
-              PassOP is an open-source project, and contributions are welcome.
-              If you'd like to improve the project, fix a bug, add a feature, or
-              contribute in any way, you can do so through GitHub.
+            <h2 className="text-2xl font-bold text-slate-900">GitHub</h2>
+            <p className="mt-3 text-slate-600">
+              Explore the project, view the source code, and contribute to the
+              next update.
             </p>
             <button
               onClick={handleGitHubClick}
-              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-5 sm:px-8 rounded-lg transition-all duration-300 hover:shadow-lg"
+              className="mt-6 w-full rounded-xl bg-slate-900 px-4 py-3 font-semibold text-white transition hover:bg-slate-800"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943" />
-              </svg>
-              Contribute on GitHub
+              Visit repository
+            </button>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-green-100 text-2xl text-green-700">
+              ✉
+            </div>
+            <h2 className="text-2xl font-bold text-slate-900">Email</h2>
+            <p className="mt-3 text-slate-600">
+              Need to ask something directly or start a conversation? Send an
+              email and I’ll respond as soon as possible.
+            </p>
+            <a
+              href="mailto:saksham.pawan14@yahoo.com"
+              className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-green-600 px-4 py-3 font-semibold text-white transition hover:bg-green-700"
+            >
+              Send email
+            </a>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-100 text-2xl text-emerald-700">
+              💡
+            </div>
+            <h2 className="text-2xl font-bold text-slate-900">Feedback</h2>
+            <p className="mt-3 text-slate-600">
+              Found a bug, have a feature idea, or want to improve the
+              experience? Share it through GitHub.
+            </p>
+            <button
+              onClick={handleGitHubClick}
+              className="mt-6 w-full rounded-xl bg-emerald-600 px-4 py-3 font-semibold text-white transition hover:bg-emerald-700"
+            >
+              Open an issue
             </button>
           </div>
         </div>
 
-        {/* Footer Section */}
-        <div className="text-center py-12 border-t border-gray-300">
-          <p className="text-lg text-gray-700 mb-4">
-            Thanks for checking out &lt;PassOP/&gt;!
-          </p>
-          <p className="text-lg text-gray-700">
-            Built with <span className="text-red-500">❤️</span> by Saksham
-          </p>
+        <div className="mt-12 rounded-3xl border border-green-200 bg-linear-to-r from-green-100 to-emerald-50 p-8 shadow-sm sm:p-10">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                Community
+              </p>
+              <h2 className="mt-2 text-3xl font-bold text-slate-900">
+                Contribute to PassOP
+              </h2>
+            </div>
+            <button
+              onClick={handleGitHubClick}
+              className="inline-flex items-center justify-center rounded-xl bg-green-600 px-5 py-3 font-semibold text-white transition hover:bg-green-700"
+            >
+              Contribute on GitHub
+            </button>
+          </div>
         </div>
       </div>
     </div>
